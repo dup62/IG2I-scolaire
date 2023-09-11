@@ -13,14 +13,14 @@ public class Voiture {
 
     private static int derniereImmatriculation = 0;
 
-    private int conducteur;
+    private Personne conducteur;
 
     public Voiture() {
         this.numeroImmatriculation = derniereImmatriculation;
         derniereImmatriculation++;
         this.marque = "???";
         this.moteur = new Moteur();
-        this.conducteur = -1;
+        this.conducteur = null;
     }
 
     public Voiture(String marque) {
@@ -51,6 +51,10 @@ public class Voiture {
         return new Moteur(this.moteur);
     }
 
+    public int getPuissanceMoteur(){
+        return this.moteur.getPuissance();
+    }
+
     public void setMoteur(Moteur moteur) {
         if (moteur != null) this.moteur = new Moteur(moteur);
     }
@@ -64,15 +68,20 @@ public class Voiture {
     }
 
     public boolean estDisponible() {
-        return this.conducteur == -1;
+        return(this.conducteur == null);
     }
 
-    public void affecterPersonne(int idPersonne) {
-        this.conducteur = idPersonne;
+    public boolean affecterConducteur(Personne conducteur) {
+        if(conducteur == null || !this.estDisponible()) return false;
+
+        if(conducteur.getVoitureImmatriculation() != this.numeroImmatriculation) return false;
+
+        this.conducteur = conducteur;
+        return true;
     }
 
     public void rendreDisponible() {
-        this.conducteur = -1;
+        this.conducteur = null;
     }
 
     @Override
@@ -81,8 +90,6 @@ public class Voiture {
                 "numeroImmatriculation='" + numeroImmatriculation + '\'' +
                 ", marque='" + marque + '\'' +
                 ", moteur=" + moteur +
-                ", estDisponible=" + estDisponible() +
-                ", Personne=" + conducteur +
                 '}';
     }
 }

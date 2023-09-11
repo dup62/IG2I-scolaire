@@ -7,7 +7,7 @@ package fr.remidesnyder.formule1;
 
 public class Personne {
 
-    private int id;
+    private int numeroIdentification;
     private String nom;
     private String prenom;
     private String adresse;
@@ -15,7 +15,7 @@ public class Personne {
     private Voiture voiture;
 
     public Personne() {
-        this.id = dernierePersonne;
+        this.numeroIdentification = dernierePersonne;
         dernierePersonne++;
         this.nom = "???";
         this.prenom = "???";
@@ -34,8 +34,8 @@ public class Personne {
         if (adresse != null) this.adresse = adresse;
     }
 
-    public int getId() {
-        return id;
+    public int getNumeroIdentification() {
+        return numeroIdentification;
     }
 
     public String getNom() {
@@ -58,11 +58,12 @@ public class Personne {
         return (this.voiture == null);
     }
 
-    public void affecterVoiture(Voiture voiture) {
-        if (voiture == null && !estPieton()) return;
+    public boolean affecterVoiture(Voiture voiture) {
+        if (voiture == null || !this.estPieton() || !voiture.estDisponible()) return false;
 
         this.voiture = voiture;
-        voiture.affecterPersonne(this.id);
+        voiture.affecterConducteur(this);
+        return true;
     }
 
     public boolean restituerVoiture() {
@@ -80,11 +81,10 @@ public class Personne {
     @Override
     public String toString() {
         return "Personne{" +
-                "id=" + id +
+                "id=" + numeroIdentification +
                 ", nom='" + nom + '\'' +
                 ", prenom='" + prenom + '\'' +
                 ", adresse='" + adresse + '\'' +
-                ", estPieton=" + estPieton() +
                 ", Voiture=" + voiture +
                 '}';
     }

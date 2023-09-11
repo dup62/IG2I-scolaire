@@ -74,6 +74,61 @@ public class Main {
         System.out.println(testPersonne.toString());
         System.out.println(testPersonne2.toString());
 
+        Moteur moteur1testcc = new Moteur("DIESEL", 1673);
+        Voiture voiture1testcc = new Voiture("MM", moteur1testcc);
+        Moteur moteur1testcbb = new Moteur("DIESEL", 1673);
+        Voiture voiture1testbb = new Voiture("MM", moteur1testcbb);
 
+        System.out.println("\n \n Test");
+        Personne personne1test = new Personne("Test", ">Test", "Test");
+        Personne personne2test = new Personne("Test2", ">Test2", "Test2");
+
+        Moteur moteur1test = new Moteur("DIESEL", 1673);
+
+        Voiture voiture1test = new Voiture("MM", moteur1test);
+
+        System.out.println(voiture1test.toString());
+        System.out.println(personne1test.toString());
+        System.out.println(personne2test.toString());
+
+        System.out.println("\n");
+        System.out.println("Voiture dispo ? = " + voiture1test.estDisponible());
+        System.out.println("P1 " + personne1test.estPieton() + " " + personne1test.getVoitureImmatriculation());
+        System.out.println("P2 " + personne2test.estPieton() + " " + personne1test.getVoitureImmatriculation());
+
+        System.out.println(personne1test.toString());
+        System.out.println(personne2test.toString());
+
+        personne1test.affecterVoiture(voiture1test);
+        personne2test.affecterVoiture(voiture1test);
+
+        System.out.println("\n");
+        System.out.println("Voiture dispo ? = " + voiture1test.estDisponible());
+        System.out.println("P1 " + personne1test.estPieton() + " " + personne1test.getVoitureImmatriculation());
+        System.out.println("P2 " + personne2test.estPieton() + " " + personne2test.getVoitureImmatriculation());
+
+        System.out.println(personne1test.toString());
+        System.out.println(personne2test.toString());
+
+        personne1test.restituerVoiture();
+
+        System.out.println("\n");
+        System.out.println("Voiture dispo ? = " + voiture1test.estDisponible());
+        System.out.println("P1 " + personne1test.estPieton() + " " + personne1test.getVoitureImmatriculation());
+        System.out.println("P2 " + personne2test.estPieton() + " " + personne2test.getVoitureImmatriculation());
+
+        System.out.println(personne1test.toString());
+        System.out.println(personne2test.toString());
+
+        personne2test.affecterVoiture(voiture1test);
+        personne1test.affecterVoiture(voiture1testcc);
+
+        System.out.println("\n");
+        System.out.println("Voiture dispo ? = " + voiture1test.estDisponible());
+        System.out.println("P1 " + personne1test.estPieton() + " " + personne1test.getVoitureImmatriculation());
+        System.out.println("P2 " + personne2test.estPieton() + " " + personne2test.getVoitureImmatriculation());
+
+        System.out.println(personne1test.toString());
+        System.out.println(personne2test.toString());
     }
 }
