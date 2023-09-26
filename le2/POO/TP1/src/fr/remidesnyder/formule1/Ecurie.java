@@ -84,7 +84,7 @@ public class Ecurie {
     }
 
     public boolean embaucher(Personne personne) {
-        if ( !this.estPresent(personne) && this.nbPersonnes < MAX_NB_PERSONNES) {
+        if ( personne != null && !this.estPresent(personne) && this.nbPersonnes < MAX_NB_PERSONNES) {
             // Si la personne n'est pas déjà dans l'équipe et que l'équipe n'a pas atteint le nombre max de personnes
             this.equipe[this.nbPersonnes] = personne;
             this.nbPersonnes++;
@@ -94,7 +94,7 @@ public class Ecurie {
     }
 
     public boolean acheter(Voiture voiture) {
-        if ( !this.estPresent(voiture) && this.nbVoitures < MAX_NB_VOITURES) {
+        if ( voiture != null && !this.estPresent(voiture) && this.nbVoitures < MAX_NB_VOITURES) {
             this.vehicules[this.nbVoitures] = voiture;
             this.nbVoitures++;
             return true;
@@ -117,17 +117,20 @@ public class Ecurie {
     }
 
     public boolean affecter(int id, int immat) {
-        Personne personne = localiserPersonne(id);
-        if (personne != null) {
-            personne.affecterVoiture(localiserVoiture(immat));
+        Personne personne = this.localiserPersonne(id);
+        Voiture voiture = this.localiserVoiture(immat);
+
+        if (personne != null && voiture != null) {
+            return personne.affecterVoiture(voiture);
         }
         return false;
     }
 
     public boolean restituer(int id) {
-        Personne personne = localiserPersonne(id);
+        Personne personne = this.localiserPersonne(id);
+
         if (personne != null) {
-            personne.restituerVoiture();
+            return personne.restituerVoiture();
         }
         return false;
     }
