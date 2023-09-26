@@ -5,7 +5,7 @@ package fr.remidesnyder.formule1;
  * Date: 11/09/2023
  */
 
-public class Voiture {
+public abstract class Voiture {
 
     private int numeroImmatriculation;
     private String marque;
@@ -72,7 +72,7 @@ public class Voiture {
     }
 
     public boolean affecterConducteur(Personne conducteur) {
-        if(conducteur == null || !this.estDisponible()) return false;
+        if(conducteur == null || !this.estDisponible() || !conducteur.estCompatible(this)) return false;
 
         if(conducteur.getVoitureImmatriculation() != this.numeroImmatriculation) return false;
 

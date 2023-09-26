@@ -5,7 +5,7 @@ package fr.remidesnyder.formule1;
  * Date: 11/09/2023
  */
 
-public class Personne {
+public abstract class Personne {
 
     private int numeroIdentification;
     private String nom;
@@ -58,11 +58,20 @@ public class Personne {
         return (this.voiture == null);
     }
 
-    public boolean affecterVoiture(Voiture voiture) {
-        if (voiture == null || !this.estPieton() || !voiture.estDisponible()) return false;
-
+    private void setVoiture(Voiture voiture) {
         this.voiture = voiture;
-        voiture.affecterConducteur(this);
+    }
+
+    public boolean affecterVoiture(Voiture voiture) {
+        if (voiture == null || !this.estPieton() || !voiture.estDisponible() || !this.estCompatible(voiture)) return false;
+
+        this.setVoiture(voiture);
+
+        if (!voiture.affecterConducteur(this)) {
+            this.affecterVoiture(null);
+            return false;
+        }
+
         return true;
     }
 
@@ -77,6 +86,8 @@ public class Personne {
         if (this.voiture == null) return -1;
         return this.voiture.getNumeroImmatriculation();
     }
+
+    public abstract boolean estCompatible(Voiture v);
 
     @Override
     public String toString() {

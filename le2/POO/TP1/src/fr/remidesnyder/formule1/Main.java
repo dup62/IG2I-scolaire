@@ -9,7 +9,7 @@ public class Main {
 
         Moteur vcopy = new Moteur(v2);
 
-        System.out.println(v1.toString());
+        /*System.out.println(v1.toString());
         System.out.println(v2.toString());
         System.out.println(v3.toString());
         System.out.println(v4.toString());
@@ -129,6 +129,6 @@ public class Main {
         System.out.println("P2 " + personne2test.estPieton() + " " + personne2test.getVoitureImmatriculation());
 
         System.out.println(personne1test.toString());
-        System.out.println(personne2test.toString());
+        System.out.println(personne2test.toString());*/
     }
 }
