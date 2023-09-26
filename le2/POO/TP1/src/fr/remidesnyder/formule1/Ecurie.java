@@ -19,12 +19,17 @@ public class Ecurie {
     private final static int MAX_NB_PERSONNES = 5;
     private final static int MAX_NB_VOITURES = 5;
 
-    public Ecurie(String nom) {
+    public Ecurie() {
         this.nbVoitures = 0;
         this.nbPersonnes = 0;
-        this.setNom(nom);
+        this.nom = "???";
         this.equipe = new Personne[MAX_NB_PERSONNES];
         this.vehicules = new Voiture[MAX_NB_VOITURES];
+    }
+
+    public Ecurie(String nom) {
+        this();
+        this.setNom(nom);
     }
 
     public String getNom() {
