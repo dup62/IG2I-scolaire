@@ -19,25 +19,74 @@ package fr.remidesnyder.masquesconfettis.atelier;
  *                         - des méthodes abstraites
  */
 
-/**
- * public interface Machine {
- *     (public abstract) void methodeA();
- *     (public abstract) int methodeB(double val);
- * }
- */
-
-/**
- * Une classe peut IMPLEMENTER plusieurs interfaces
- *                      -> DOIT donner une implémentation (un corps)
- *                              de toutes les méthodes de l'interface
- */
-
-/**
- * public class Machine extend Class1 implements InterfaceA, InterfaceB {
- *     public void methodeA() {...}
- *     public int methodeB(double val) {...}
- * }
- */
+import java.sql.SQLOutput;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Machine {
+
+    /**
+     * @param dateDisponibilite Date de disponibilité de la machine
+     */
+    private int dateDisponibilite;
+    /**
+     * @param penaliteTotale Pénalité totale de la machine
+     */
+    private double penaliteTotale;
+    /**
+     * @param listeTaches Liste des tâches de la machine
+     */
+    private List<Tache> listeTaches;
+
+    public Machine() {
+        this.listeTaches = new LinkedList<>();
+        this.dateDisponibilite = 0;
+        this.penaliteTotale = 0.0;
+    }
+
+    public int getDateDisponibilite() {
+        return dateDisponibilite;
+    }
+
+    public double getPenaliteTotale() {
+        return penaliteTotale;
+    }
+
+    @Override
+    public String toString() {
+        return "Machine{" +
+                "dateDisponibilite=" + dateDisponibilite +
+                ", penaliteTotale=" + penaliteTotale +
+                ", listeTaches=" + listeTaches +
+                "}";
+    }
+
+    public boolean addTache(Tache tache) {
+
+        if (tache != null && tache.peutEtreAffectee()) {
+            tache.setDateDebut(this.dateDisponibilite);
+            this.dateDisponibilite += tache.getTempsProduction();
+            this.penaliteTotale += tache.coutPenalite();
+            return this.listeTaches.add(tache);
+        }
+        return false;
+    }
+
+    public static void main(String[] args) {
+        Tache t1 = new Tache(150, 300, 2.5);
+        Tache t2 = new Tache(140, 400, 1.5);
+        Tache t3 = new Tache(50, 200, 2.5);
+        Tache t4 = new Tache(85, 200, 1.0);
+        Tache t5 = new Tache(75, 160, 0.5);
+        Tache t6 = new Tache(80, 500, 1.5);
+
+        Machine m1 = new Machine();
+        m1.addTache(t1);
+        m1.addTache(t2);
+        m1.addTache(t3);
+        m1.addTache(t4);
+        m1.addTache(t5);
+
+        System.out.println(m1.toString());
+    }
 }
