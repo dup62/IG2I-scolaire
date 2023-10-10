@@ -76,8 +76,8 @@ public class Atelier {
      */
     /**
      * Retourne la machine à la position posMachine
-     * @param posMachine
-     * @return
+     * @param posMachine Position de la machine
+     * @return La machine à la position posMachine
      */
     private Machine getMachine(int posMachine){
         if (posMachine >= 0 && posMachine < this.listeMachines.size())
@@ -88,9 +88,9 @@ public class Atelier {
 
     /**
      * Ajoute une tâche à la machine à la position posMachine
-     * @param t
-     * @param posMachine
-     * @return
+     * @param t Tâche à ajouter
+     * @param posMachine Position de la machine
+     * @return true si la tâche a été ajoutée, false sinon
      */
     private boolean addTache(Tache t, int posMachine) {
         Machine machine = this.getMachine(posMachine);
@@ -138,7 +138,7 @@ public class Atelier {
         Tache t5 = new Tache(75, 160, 0.5);
         Tache t6 = new Tache(80, 500, 1.5);
 
-        Atelier atelier = new Atelier(2);
+        Atelier atelier = new Atelier(3);
 
         List<Tache> taches = new ArrayList<Tache>();
         taches.add(t1);

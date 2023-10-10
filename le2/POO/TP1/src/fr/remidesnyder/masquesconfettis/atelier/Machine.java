@@ -66,7 +66,14 @@ public class Machine {
                 ", listeTaches=" + listeTaches +
                 "}";
     }
-
+    /**
+     * Q7
+     */
+    /**
+     * Ajoute une tâche à la machine
+     * @param tache
+     * @return
+     */
     public boolean addTache(Tache tache) {
 
         if (tache != null && tache.peutEtreAffectee()) {

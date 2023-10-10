@@ -63,7 +63,9 @@ public class Tache {
 
     public Tache(int tempsProduction, int dateLimite, double penaliteUnitaire) {
         this(tempsProduction);
-        if (dateLimite >= 2 * this.tempsProduction) this.dateLimite = dateLimite;
+        //if (dateLimite >= 2 * this.tempsProduction) this.dateLimite = dateLimite;
+        //else this.dateLimite = 2 * this.tempsProduction; // Pas demandé par le sujet mais donne une certaine cohérence
+        this.dateLimite = Math.max(dateLimite, 2 * this.tempsProduction);
         if( penaliteUnitaire >= 0) this.penaliteUnitaire = penaliteUnitaire;
     }
 
