@@ -19,12 +19,12 @@ package fr.remidesnyder.masquesconfettis.atelier;
  *                         - des méthodes abstraites
  */
 
-import java.sql.SQLOutput;
 import java.util.LinkedList;
 import java.util.List;
 
 public class Machine {
 
+    private final int identifiantMachine;
     /**
      * @param dateDisponibilite Date de disponibilité de la machine
      */
@@ -38,7 +38,11 @@ public class Machine {
      */
     private List<Tache> listeTaches;
 
+    private static int dernierId = 0;
+
     public Machine() {
+        this.identifiantMachine = dernierId;
+        dernierId++;
         this.listeTaches = new LinkedList<>();
         this.dateDisponibilite = 0;
         this.penaliteTotale = 0.0;
@@ -54,8 +58,10 @@ public class Machine {
 
     @Override
     public String toString() {
-        return "Machine{" +
-                "dateDisponibilite=" + dateDisponibilite +
+        String newLine = System.getProperty("line.separator");
+        return newLine + "Machine{" +
+                "identifiantMachine=" + identifiantMachine +
+                ", dateDisponibilite=" + dateDisponibilite +
                 ", penaliteTotale=" + penaliteTotale +
                 ", listeTaches=" + listeTaches +
                 "}";
@@ -86,6 +92,7 @@ public class Machine {
         m1.addTache(t3);
         m1.addTache(t4);
         m1.addTache(t5);
+        m1.addTache(t6);
 
         System.out.println(m1.toString());
     }
