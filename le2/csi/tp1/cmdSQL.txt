@@ -55,3 +55,30 @@ SELECT tickets.plaqueImmatriculation, tickets.dateDebut, tickets.heureDebut, tic
 
 (d) Tickets du véhicule AA-123-BB. Reprendre la question (c) mais uniquement pour
 les tickets du véhicule ayant la plaque d’immatriculation AA-123-BB.
+
+SELECT tickets.plaqueImmatriculation, tickets.dateDebut, tickets.heureDebut, tickets.dureePrevu, horodateurs.numeroRue, horodateurs.nomRue, zonesTarifaires.nom, zonesTarifaires.tarifHoraire, tickets.prixTotal
+	FROM `tickets`
+    INNER JOIN `horodateurs` ON tickets.idHorodateur = horodateurs.id
+    INNER JOIN `zonesTarifaires` ON horodateurs.idZone = zonesTarifaires.id
+    WHERE tickets.plaqueImmatriculation = "AA-123-BB"
+
+(e) Tickets de la journée. Reprendre la question (c) mais uniquement pour les tickets
+qui sont datés du jour d’exécution de la requête, que le stationnement soit terminé ou
+non.
+
+SELECT tickets.plaqueImmatriculation, tickets.dateDebut, tickets.heureDebut, tickets.dureePrevu, horodateurs.numeroRue, horodateurs.nomRue, zonesTarifaires.nom, zonesTarifaires.tarifHoraire, tickets.prixTotal
+	FROM `tickets`
+    INNER JOIN `horodateurs` ON tickets.idHorodateur = horodateurs.id
+    INNER JOIN `zonesTarifaires` ON horodateurs.idZone = zonesTarifaires.id
+    WHERE tickets.dateDebut = Date(Now())
+
+(f) Tickets en cours du véhicule ZZ-789-ZZ. Reprendre la question (c) mais
+uniquement pour les tickets en cours (stationnement non terminé 13) et pour le véhicule ayant la plaque d’immatriculation ZZ-789-ZZ.
+
+SELECT tickets.plaqueImmatriculation, tickets.dateDebut, tickets.heureDebut, tickets.dureePrevu, horodateurs.numeroRue, horodateurs.nomRue, zonesTarifaires.nom, zonesTarifaires.tarifHoraire, tickets.prixTotal
+	FROM `tickets`
+    INNER JOIN `horodateurs` ON tickets.idHorodateur = horodateurs.id
+    INNER JOIN `zonesTarifaires` ON horodateurs.idZone = zonesTarifaires.id
+    WHERE tickets.plaqueImmatriculation = "ZZ-789-ZZ" &&
+    DATE(ADDTIME(CONCAT(CONCAT(tickets.dateDebut, " "), tickets.heureDebut), CONCAT(tickets.dureePrevu, ":0:0"))) >= DATE(NOW()) &&
+ 	TIME(ADDTIME(CONCAT(CONCAT(tickets.dateDebut, " "), tickets.heureDebut), CONCAT(tickets.dureePrevu, ":0:0"))) > TIME(NOW())
