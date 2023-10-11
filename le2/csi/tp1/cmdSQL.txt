@@ -1,1 +1,57 @@
+- (a) Liste des horodateurs. Retourner la liste des horodateurs : adresse, nom de la
+zone tarifaire, coût horaire et nombre de tickets édités pour chaque horodateur.
 
+SELECT `numeroRue`, `nomRue`, zonesTarifaires.nom, zonesTarifaires.tarifHoraire, COUNT(horodateurs.id) AS nbTicketEdite
+	FROM `horodateurs`
+    INNER JOIN `zonesTarifaires` ON zonesTarifaires.id = horodateurs.idZone
+    INNER JOIN `tickets` ON tickets.idHorodateur = horodateurs.id
+    GROUP BY horodateurs.id
+
+- (b) Liste des zones tarifaires. Retourner la liste des zones tarifaires : nom, coût
+horaire, nombre d’horodateurs rattachés et nombre total de tickets édités pour
+chaque zone.
+
+SELECT zonesTarifaires.nom, zonesTarifaires.tarifHoraire, COUNT(zonesTarifaires.id) AS nbHorodateurs
+	FROM `zonesTarifaires`
+    INNER JOIN `horodateurs` ON horodateurs.idZone = zonesTarifaires.id
+    GROUP BY zonesTarifaires.id
+
+SELECT zonesTarifaires.nom, COUNT(zonesTarifaires.nom) AS nbTickets
+	FROM `zonesTarifaires`
+    INNER JOIN `horodateurs` ON horodateurs.idZone = zonesTarifaires.id
+    INNER JOIN `tickets` ON tickets.idHorodateur = horodateurs.id
+    GROUP BY zonesTarifaires.nom
+
+SELECT 
+	Z1.nom, Z1.tarifHoraire, COUNT(Z1.id) AS nbHorodateurs, 
+    (SELECT COUNT(Z2.nom)
+		FROM `zonesTarifaires` AS Z2
+    	INNER JOIN `horodateurs` ON horodateurs.idZone = Z2.id
+    	INNER JOIN `tickets` ON tickets.idHorodateur = horodateurs.id
+     	WHERE Z2.id = Z1.id
+    	GROUP BY Z2.nom	
+    ) AS nbTickets
+	FROM `zonesTarifaires` AS Z1
+    INNER JOIN `horodateurs` ON horodateurs.idZone = Z1.id
+    GROUP BY Z1.id
+
+(c) Liste des tickets. Retourner les informations de tous les tickets de stationnement :
+plaque d’immatriculation, date et heure du début de stationnement, durée prévue de
+stationnement, adresse de l’horodateur, nom et coût horaire de la zone tarifaire, et
+coût total du ticket.
+
+SELECT tickets.plaqueImmatriculation, tickets.dateDebut, tickets.heureDebut, tickets.dureePrevu, horodateurs.numeroRue, horodateurs.nomRue, zonesTarifaires.nom, zonesTarifaires.tarifHoraire, (tickets.dureePrevu * zonesTarifaires.tarifHoraire) AS coutTotal
+	FROM `tickets`
+    INNER JOIN `horodateurs` ON tickets.idHorodateur = horodateurs.id
+    INNER JOIN `zonesTarifaires` ON horodateurs.idZone = zonesTarifaires.id
+
+
+Si on a un attribut coutTotal:
+
+SELECT tickets.plaqueImmatriculation, tickets.dateDebut, tickets.heureDebut, tickets.dureePrevu, horodateurs.numeroRue, horodateurs.nomRue, zonesTarifaires.nom, zonesTarifaires.tarifHoraire, tickets.prixTotal
+	FROM `tickets`
+    INNER JOIN `horodateurs` ON tickets.idHorodateur = horodateurs.id
+    INNER JOIN `zonesTarifaires` ON horodateurs.idZone = zonesTarifaires.id
+
+(d) Tickets du véhicule AA-123-BB. Reprendre la question (c) mais uniquement pour
+les tickets du véhicule ayant la plaque d’immatriculation AA-123-BB.
