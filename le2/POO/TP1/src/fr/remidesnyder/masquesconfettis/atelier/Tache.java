@@ -5,13 +5,19 @@ package fr.remidesnyder.masquesconfettis.atelier;
  * Date: 10/10/2023
  */
 
+import fr.remidesnyder.masquesconfettis.ordonnancement.Ordonnancement;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
+
 /**
  * static -> commun à toutes les instances de la classe
  * final -> ne peut pas être modifié après initialisation
  * constante -> Static + Final (Par convention, on écrit en majuscule)
  */
 
-public class Tache {
+public class Tache implements Comparable<Tache> {
 
     /**
      * @param id Identifiant de la tâche
@@ -69,6 +75,16 @@ public class Tache {
         if( penaliteUnitaire >= 0) this.penaliteUnitaire = penaliteUnitaire;
     }
 
+    // Constructeur par copie
+    public Tache(Tache tache) {
+        if (tache == null) return;
+        this.id = tache.id;
+        this.tempsProduction = tache.tempsProduction;
+        this.dateDebut = tache.dateDebut;
+        this.dateLimite = tache.dateLimite;
+        this.penaliteUnitaire = tache.penaliteUnitaire;
+    }
+
     // Getters et Setters
 
     public int getTempsProduction() {
@@ -106,6 +122,38 @@ public class Tache {
                 ", penaliteUnitaire=" + penaliteUnitaire +
                 '}' +
                 newLine;
+    }
+
+    @Override
+    public int compareTo(Tache o)
+    {
+        if ( o.tempsProduction == this.tempsProduction)   // SI 2 instances ont la même durée d'exécution ALORS on compare leur ID
+            return this.id - o.id;
+
+        return this.tempsProduction - o.tempsProduction;  // Si this > obj alors on renvoie un positif
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, tempsProduction);
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj) {
+            return true;
+        }
+        if (obj == null) {
+            return false;
+        }
+        if (getClass() != obj.getClass()) {
+            return false;
+        }
+        final Tache other = (Tache) obj;
+        if (this.id != other.id) {
+            return false;
+        }
+        return this.tempsProduction == other.tempsProduction;
     }
 
     /**
@@ -146,6 +194,16 @@ public class Tache {
         System.out.println(t4);
         System.out.println(t5);
         System.out.println(t6);
+
+        // TP4  -> Test Copie en profondeur
+
+        List<Tache> taches = new ArrayList<>();
+        taches.add(new Tache(100));
+        taches.add(new Tache(150));
+        List<Tache> copieTaches = Ordonnancement.copierTaches(taches);
+        copieTaches.add(new Tache(400));
+        System.out.println("Nombre de taches initiales : " + taches.size());
+        System.out.println("Nombre de taches finales : " + copieTaches.size());
     }
 
 }

@@ -1,7 +1,11 @@
 package fr.remidesnyder.masquesconfettis.atelier;
 
+import fr.remidesnyder.masquesconfettis.ordonnancement.OrdonnancementMonsieurSorcier;
+
+import java.sql.SQLOutput;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * Created by Desnyder Rémi
@@ -130,6 +134,15 @@ public class Atelier {
         }
     }
 
+    public void afficher(boolean verbose) {
+        System.out.println("Temps total d'exécution : " + this.tempsTotalExecution);
+        System.out.println("Pénalité totale : " + this.penaliteTotale);
+
+        if (verbose) {
+            System.out.println(this.toString());
+        }
+    }
+
     public static void main(String[] args) {
         Tache t1 = new Tache(150, 300, 2.5);
         Tache t2 = new Tache(140, 400, 1.5);
@@ -138,7 +151,7 @@ public class Atelier {
         Tache t5 = new Tache(75, 160, 0.5);
         Tache t6 = new Tache(80, 500, 1.5);
 
-        Atelier atelier = new Atelier(3);
+        Atelier atelier = new Atelier(2);
 
         List<Tache> taches = new ArrayList<Tache>();
         taches.add(t1);
