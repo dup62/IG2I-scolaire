@@ -134,9 +134,23 @@ public class Atelier {
         }
     }
 
+    // Declaring ANSI_RESET so that we can reset the color
+    public static final String ANSI_RESET = "\u001B[0m";
+    // Declaring the background color
+    public static final String ANSI_RED_BACKGROUND
+            = "\u001B[41m";
     public void afficher(boolean verbose) {
-        System.out.println("Temps total d'exécution : " + this.tempsTotalExecution);
-        System.out.println("Pénalité totale : " + this.penaliteTotale);
+        // Now add the particular background color
+        System.out.println(ANSI_RED_BACKGROUND
+                + "Temps total d'exécution : "
+                + this.tempsTotalExecution
+                + ANSI_RESET);
+        System.out.println(ANSI_RED_BACKGROUND
+                + "Pénalité totale : "
+                + this.penaliteTotale
+                + ANSI_RESET);
+        //System.out.println("Temps total d'exécution : " + this.tempsTotalExecution);
+        //System.out.println("Pénalité totale : " + this.penaliteTotale);
 
         if (verbose) {
             System.out.println(this.toString());
