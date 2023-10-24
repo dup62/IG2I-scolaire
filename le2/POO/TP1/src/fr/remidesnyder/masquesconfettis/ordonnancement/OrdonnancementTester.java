@@ -1,5 +1,6 @@
 package fr.remidesnyder.masquesconfettis.ordonnancement;
 
+import fr.remidesnyder.masquesconfettis.atelier.Atelier;
 import fr.remidesnyder.masquesconfettis.atelier.Tache;
 
 import java.util.ArrayList;
@@ -49,17 +50,17 @@ public class OrdonnancementTester {
      */
     public static List<Tache> ensTaches1() {
         List<Tache> ensTaches = new ArrayList<>();
-        Tache t0 = new Tache(150);
+        Tache t0 = new Tache(150, 200, 2);
         ensTaches.add(t0);
-        Tache t1 = new Tache(140);
+        Tache t1 = new Tache(140, 100, 2);
         ensTaches.add(t1);
-        Tache t2 = new Tache(50);
+        Tache t2 = new Tache(50, 200, 4);
         ensTaches.add(t2);
-        Tache t3 = new Tache(85);
+        Tache t3 = new Tache(85, 100, 3);
         ensTaches.add(t3);
-        Tache t4 = new Tache(75);
+        Tache t4 = new Tache(75, 200, 2);
         ensTaches.add(t4);
-        Tache t5 = new Tache(80);
+        Tache t5 = new Tache(80, 100, 2);
         ensTaches.add(t5);
         return ensTaches;
     }
@@ -69,85 +70,85 @@ public class OrdonnancementTester {
      */
     public static List<Tache> ensTaches2() {
         List<Tache> ensTaches = new ArrayList<>();
-        Tache t0 = new Tache(2350);
+        Tache t0 = new Tache(2350, 3000, 2.5);
         ensTaches.add(t0);
-        Tache t1 = new Tache(238);
+        Tache t1 = new Tache(238, 400, 1.5);
         ensTaches.add(t1);
-        Tache t2 = new Tache(97);
+        Tache t2 = new Tache(97, 200, 2.5);
         ensTaches.add(t2);
-        Tache t3 = new Tache(265);
+        Tache t3 = new Tache(265, 200, 1.0);
         ensTaches.add(t3);
-        Tache t4 = new Tache(104);
+        Tache t4 = new Tache(104, 160, 0.5);
         ensTaches.add(t4);
-        Tache t5 = new Tache(154);
+        Tache t5 = new Tache(154, 500, 1.5);
         ensTaches.add(t5);
-        Tache t6 = new Tache(370);
+        Tache t6 = new Tache(370, 3000, 2.5);
         ensTaches.add(t6);
-        Tache t7 = new Tache(56);
+        Tache t7 = new Tache(56, 400, 1.5);
         ensTaches.add(t7);
-        Tache t8 = new Tache(228);
+        Tache t8 = new Tache(228, 200, 2.5);
         ensTaches.add(t8);
-        Tache t9 = new Tache(440);
+        Tache t9 = new Tache(440, 200, 1.0);
         ensTaches.add(t9);
-        Tache t10 = new Tache(2190);
+        Tache t10 = new Tache(2190, 160, 0.5);
         ensTaches.add(t10);
-        Tache t11 = new Tache(123);
+        Tache t11 = new Tache(123, 500, 1.5);
         ensTaches.add(t11);
-        Tache t12 = new Tache(285);
+        Tache t12 = new Tache(285, 3000, 2.5);
         ensTaches.add(t12);
-        Tache t13 = new Tache(113);
+        Tache t13 = new Tache(113, 400, 1.5);
         ensTaches.add(t13);
-        Tache t14 = new Tache(212);
+        Tache t14 = new Tache(212, 200, 2.5);
         ensTaches.add(t14);
-        Tache t15 = new Tache(370);
+        Tache t15 = new Tache(370, 200, 1.0);
         ensTaches.add(t15);
-        Tache t16 = new Tache(242);
+        Tache t16 = new Tache(242, 160, 0.5);
         ensTaches.add(t16);
-        Tache t17 = new Tache(112);
+        Tache t17 = new Tache(112, 500, 1.5);
         ensTaches.add(t17);
-        Tache t18 = new Tache(680);
+        Tache t18 = new Tache(680, 3000, 2.5);
         ensTaches.add(t18);
-        Tache t19 = new Tache(239);
+        Tache t19 = new Tache(239, 400, 1.5);
         ensTaches.add(t19);
-        Tache t20 = new Tache(2260);
+        Tache t20 = new Tache(2260, 200, 2.5);
         ensTaches.add(t20);
-        Tache t21 = new Tache(360);
+        Tache t21 = new Tache(360, 200, 1.0);
         ensTaches.add(t21);
-        Tache t22 = new Tache(160);
+        Tache t22 = new Tache(160, 160, 0.5);
         ensTaches.add(t22);
-        Tache t23 = new Tache(149);
+        Tache t23 = new Tache(149, 500, 1.5);
         ensTaches.add(t23);
-        Tache t24 = new Tache(570);
+        Tache t24 = new Tache(570, 3000, 2.5);
         ensTaches.add(t24);
-        Tache t25 = new Tache(209);
+        Tache t25 = new Tache(209, 400, 1.5);
         ensTaches.add(t25);
-        Tache t26 = new Tache(148);
+        Tache t26 = new Tache(148, 200, 2.5);
         ensTaches.add(t26);
-        Tache t27 = new Tache(465);
+        Tache t27 = new Tache(465, 200, 1.0);
         ensTaches.add(t27);
-        Tache t28 = new Tache(87);
+        Tache t28 = new Tache(87, 160, 0.5);
         ensTaches.add(t28);
-        Tache t29 = new Tache(152);
+        Tache t29 = new Tache(152, 500, 1.5);
         ensTaches.add(t29);
-        Tache t30 = new Tache(550);
+        Tache t30 = new Tache(550, 3000, 2.5);
         ensTaches.add(t30);
-        Tache t31 = new Tache(104);
+        Tache t31 = new Tache(104, 400, 1.5);
         ensTaches.add(t31);
-        Tache t32 = new Tache(50);
+        Tache t32 = new Tache(50, 200, 2.5);
         ensTaches.add(t32);
-        Tache t33 = new Tache(230);
+        Tache t33 = new Tache(230, 200, 1.0);
         ensTaches.add(t33);
-        Tache t34 = new Tache(213);
+        Tache t34 = new Tache(213, 160, 0.5);
         ensTaches.add(t34);
-        Tache t35 = new Tache(205);
+        Tache t35 = new Tache(205, 500, 1.5);
         ensTaches.add(t35);
-        Tache t36 = new Tache(645);
+        Tache t36 = new Tache(645, 3000, 2.5);
         ensTaches.add(t36);
-        Tache t37 = new Tache(70);
+        Tache t37 = new Tache(70, 400, 1.5);
         ensTaches.add(t37);
-        Tache t38 = new Tache(125);
+        Tache t38 = new Tache(125, 200, 2.5);
         ensTaches.add(t38);
-        Tache t39 = new Tache(370);
+        Tache t39 = new Tache(370, 200, 1.0);
         ensTaches.add(t39);
         return ensTaches;
     }
@@ -373,45 +374,45 @@ public class OrdonnancementTester {
      */
     public static List<Tache> ensTaches5() {
         List<Tache> ensTaches = new ArrayList<>();
-        Tache t0 = new Tache(540);
+        Tache t0 = new Tache(540, 600, 2.5);
         ensTaches.add(t0);
-        Tache t1 = new Tache(355);
+        Tache t1 = new Tache(355, 400, 1.5);
         ensTaches.add(t1);
-        Tache t2 = new Tache(244);
+        Tache t2 = new Tache(244, 200, 2.5);
         ensTaches.add(t2);
-        Tache t3 = new Tache(548);
+        Tache t3 = new Tache(548, 200, 1.0);
         ensTaches.add(t3);
-        Tache t4 = new Tache(392);
+        Tache t4 = new Tache(392, 160, 0.5);
         ensTaches.add(t4);
-        Tache t5 = new Tache(275);
+        Tache t5 = new Tache(275, 500, 1.5);
         ensTaches.add(t5);
-        Tache t6 = new Tache(594);
+        Tache t6 = new Tache(594, 600, 2.5);
         ensTaches.add(t6);
-        Tache t7 = new Tache(232);
+        Tache t7 = new Tache(232, 400, 1.5);
         ensTaches.add(t7);
-        Tache t8 = new Tache(137);
+        Tache t8 = new Tache(137, 200, 2.5);
         ensTaches.add(t8);
-        Tache t9 = new Tache(730);
+        Tache t9 = new Tache(730, 200, 1.0);
         ensTaches.add(t9);
-        Tache t10 = new Tache(186);
+        Tache t10 = new Tache(186, 160, 0.5);
         ensTaches.add(t10);
-        Tache t11 = new Tache(126);
+        Tache t11 = new Tache(126, 500, 1.5);
         ensTaches.add(t11);
-        Tache t12 = new Tache(642);
+        Tache t12 = new Tache(642, 600, 2.5);
         ensTaches.add(t12);
-        Tache t13 = new Tache(390);
+        Tache t13 = new Tache(390, 400, 1.5);
         ensTaches.add(t13);
-        Tache t14 = new Tache(217);
+        Tache t14 = new Tache(217, 200, 2.5);
         ensTaches.add(t14);
-        Tache t15 = new Tache(559);
+        Tache t15 = new Tache(559, 200, 1.0);
         ensTaches.add(t15);
-        Tache t16 = new Tache(305);
+        Tache t16 = new Tache(305, 160, 0.5);
         ensTaches.add(t16);
-        Tache t17 = new Tache(148);
+        Tache t17 = new Tache(148, 500, 1.5);
         ensTaches.add(t17);
-        Tache t18 = new Tache(100);
+        Tache t18 = new Tache(100, 600, 2.5);
         ensTaches.add(t18);
-        Tache t19 = new Tache(259);
+        Tache t19 = new Tache(259, 400, 1.5);
         ensTaches.add(t19);
         return ensTaches;
     }
@@ -2425,6 +2426,43 @@ public class OrdonnancementTester {
         return ensTaches;
     }
 
+    // Declaring ANSI_RESET so that we can reset the color
+    public static final String ANSI_RESET = "\u001B[0m";
+    // Declaring ANSI_RED so that we can print in red
+    public static final String ANSI_BLACK = "\u001B[30m";
+    public static final String ANSI_BLUE_BACKGROUND = "\u001B[44m";
+
+    public static void comparerMeilleurMethode(
+            List<Tache> taches,
+            int nbMachines,
+            List<Ordonnancement> methodesOrdonnancement,
+            boolean verbose) {
+
+        Atelier meilleur = null;
+        Atelier meilleurPenalite = null;
+        String meilleurMethodeTempsExce = "null";
+        String meilleurMethodePenalite = "null";
+        for (Ordonnancement methode : methodesOrdonnancement) {
+            Atelier atelier = methode.ordonnancer(nbMachines, taches);
+            if (verbose) {
+                System.out.println(methode.getClass().getSimpleName() + " : " + atelier);
+            }
+            if (meilleur == null || atelier.getTempsTotalExecution() < meilleur.getTempsTotalExecution()) {
+                meilleur = atelier;
+                meilleurMethodeTempsExce = ANSI_BLUE_BACKGROUND + ANSI_BLACK + methode.getClass().getSimpleName() + ANSI_RESET;
+            }
+            if (meilleurPenalite == null || atelier.getPenaliteTotale() < meilleur.getPenaliteTotale()) {
+                meilleurPenalite = atelier;
+                meilleurMethodePenalite = ANSI_BLUE_BACKGROUND + ANSI_BLACK + methode.getClass().getSimpleName() + ANSI_RESET;
+            }
+        }
+
+
+        System.out.println("Meilleur méthode tempsExce : " + meilleurMethodeTempsExce);
+        System.out.println("Meilleur méthode penalite : " + meilleurMethodePenalite);
+
+    }
+
     public static void main(String[] args) {
         boolean verbose = false;
         List<Ordonnancement> methodes = new ArrayList<>();
@@ -2434,15 +2472,21 @@ public class OrdonnancementTester {
         methodes.add(new OrdonnancementTempsHasard());
         System.out.println("Test instance n°1");
         comparerMethodesOrdonnancement(ensTaches1(), 2, methodes, verbose);
+        comparerMeilleurMethode(ensTaches1(), 2, methodes, verbose);
         System.out.println("Test instance n°2");
         comparerMethodesOrdonnancement(ensTaches2(), 3, methodes, verbose);
+        comparerMeilleurMethode(ensTaches2(), 3, methodes, verbose);
         System.out.println("Test instance n°3");
         comparerMethodesOrdonnancement(ensTaches3(), 4, methodes, verbose);
+        comparerMeilleurMethode(ensTaches3(), 4, methodes, verbose);
         System.out.println("Test instance n°4");
         comparerMethodesOrdonnancement(ensTaches4(), 4, methodes, verbose);
+        comparerMeilleurMethode(ensTaches4(), 4, methodes, verbose);
         System.out.println("Test instance n°5");
         comparerMethodesOrdonnancement(ensTaches5(), 4, methodes, verbose);
+        comparerMeilleurMethode(ensTaches5(), 4, methodes, verbose);
         System.out.println("Test instance n°6");
         comparerMethodesOrdonnancement(ensTaches6(), 3, methodes, verbose);
+        comparerMeilleurMethode(ensTaches6(), 3, methodes, verbose);
     }
 }
