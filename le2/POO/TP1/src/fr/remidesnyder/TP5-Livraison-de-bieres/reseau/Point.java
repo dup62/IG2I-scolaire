@@ -131,7 +131,7 @@ public class Point {
         //}
         //return -1;
         //return Math.sqrt(Math.pow(p.getAbscisse() - this.getAbscisse(), 2) + Math.pow(p.getOrdonnee() - this.getOrdonnee(), 2))
-        if (this.mesDestinations.containsKey(p)) {
+        if (p != null && this.mesDestinations.containsKey(p)) {
             return this.mesDestinations.get(p).getDistance();
         } else {
             return Double.POSITIVE_INFINITY;
