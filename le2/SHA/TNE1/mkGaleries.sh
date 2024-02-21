@@ -38,9 +38,17 @@ if [ "$1" = "-h" ]; then
   exit 1
 fi
 
-#if [ "$1" = "-y" ]; then
-#fi
+if [ "$1" = "-clear" ]; then
 
+  echo -n "Voulez-vous supprimer le contenu de ./galeries ? (Images, html) [y-N] : "
+  read REPONSE
+  if [ "$REPONSE" = "y" ] || [ "$REPONSE" = "Y" ]; then
+    rm -rf ./galeries/*
+    exit 1
+  else
+    exit 1
+  fi
+fi
 
 # Répertoire de base de la recherche
 
@@ -260,6 +268,7 @@ echo "Voulez-vous supprimer le contenu de $GALLERY_PATH ? (Images, html) [y-N] :
 read REPONSE
 if [ "$REPONSE" = "y" ] || [ "$REPONSE" = "Y" ]; then
   rm -rf $GALLERY_PATH/*
+  echo "Contenu de $GALLERY_PATH supprimé"
 fi
 
 
@@ -310,6 +319,8 @@ echo "<style>
     max-height: `expr $SIZE_IMAGE_GAL_MAX + 50`px;
     border: 1px solid black;
     text-align: center;
+    float: left;
+    margin:5px;
   }
   .cadre img {
     max-width: ${SIZE_IMAGE_GAL_MAX}px;
@@ -336,7 +347,7 @@ for FIC in $(ls html/gal???.html)
 do
   echo "Traitement de $FIC"
   echo "Galerie $NUM_GAL"
-  echo "<a href=\"$fic\">Galerie $NUM_GAL </a>&nbsp;" >> html/index.html
+  echo "<a href=../$FIC>Galerie $NUM_GAL </a>" >> html/index.html
   NUM_GAL=`expr $NUM_GAL + 1`
 done
 
@@ -353,3 +364,7 @@ done
 echo "Les index ont été ajoutés aux galeries"
 
 exit
+
+# Desnyder Rémi
+# LE2 - B1
+# TNE1 - SHA
