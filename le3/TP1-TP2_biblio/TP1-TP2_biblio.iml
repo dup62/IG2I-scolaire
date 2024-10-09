@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" inherit-compiler-output="true">
+    <exclude-output />
+    <content url="file://$MODULE_DIR$/../../../../../Troisième Année - IG2I/Semestre 5/Génie Informatique/POO/TP1-TP2_biblio">
+      <sourceFolder url="file://$MODULE_DIR$/../../../../../Troisième Année - IG2I/Semestre 5/Génie Informatique/POO/TP1-TP2_biblio/src" isTestSource="false" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="mysql-connector-j-8.2.0" level="project" />
+  </component>
+</module>
