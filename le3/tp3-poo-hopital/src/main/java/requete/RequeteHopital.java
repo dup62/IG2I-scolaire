@@ -45,7 +45,9 @@ public class RequeteHopital {
   public List<Medecin> getMedecinsChef() {
 
     EntityManager em = emf.createEntityManager();
-    String strQuery = "SELECT m FROM Medecin m WHERE m.id IN (SELECT DISTINCT m2.estGerePar.id FROM Medecin m2 WHERE m2.estGerePar IS NOT NULL)";
+    //String strQuery = "SELECT m FROM Medecin m WHERE m.id IN (SELECT DISTINCT m2.estGerePar.id FROM Medecin m2 WHERE m2.estGerePar IS NOT NULL)";
+    //String strQuery = "SELECT m FROM Medecin m WHERE m.estGerePar IS NOT NULL";
+    String strQuery = "SELECT m.estGerePar FROM Medecin m";
     Query query = em.createQuery(strQuery);
     List<Medecin> medecins = query.getResultList();
     em.close();
