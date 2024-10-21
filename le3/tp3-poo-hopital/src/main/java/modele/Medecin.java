@@ -5,28 +5,14 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
+@NamedQueries({
+    @NamedQuery(name = "Medecin.findMedecinByChef",
+        query = "SELECT m FROM Medecin m WHERE m.estGerePar.nom = :nom AND m.estGerePar.prenom = :prenom"),
+    @NamedQuery(name = "Medecin.getAllMedecin",
+        query = "SELECT m FROM Medecin m"),
+})
 @Entity
-@Table(
-        name = "Medecin",
-        uniqueConstraints={
-                @UniqueConstraint(
-                        name = "UNIQUE_MED",
-                        columnNames = {"MEDNOM", "MEDPRENOM"}
-                )
-        }
-)
-public class Medecin {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "MEDNO")
-    private int id;
-
-    @Column(name = "MEDNOM", nullable = false, length = 50)
-    private String nom;
-
-    @Column(name = "MEDPRENOM", nullable = false, length = 50)
-    private String prenom;
+public class Medecin extends Personne{
 
     @Column(name = "MEDSALAIRE", nullable = false, columnDefinition = "NUMERIC(10,2)")
     private double salaire;
@@ -46,28 +32,12 @@ public class Medecin {
     private Medecin estGerePar; // 0..1
 
     public Medecin() {
+        super();
     }
 
     public Medecin(String nom, String prenom, double salaire) {
-        this.nom = nom;
-        this.prenom = prenom;
+        super(nom, prenom);
         this.salaire = salaire;
-    }
-
-    public String getNom() {
-        return nom;
-    }
-
-    public void setNom(String nom) {
-        this.nom = nom;
-    }
-
-    public String getPrenom() {
-        return prenom;
-    }
-
-    public void setPrenom(String prenom) {
-        this.prenom = prenom;
     }
 
     public double getSalaire() {
@@ -115,20 +85,18 @@ public class Medecin {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Medecin medecin = (Medecin) o;
-        return Double.compare(salaire, medecin.salaire) == 0 && Objects.equals(nom, medecin.nom) && Objects.equals(prenom, medecin.prenom);
+        return Double.compare(salaire, medecin.salaire) == 0 && Objects.equals(this.getNom(), medecin.getNom()) && Objects.equals(this.getPrenom(), medecin.getPrenom());
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(nom, prenom, salaire);
+        return Objects.hash(this.getNom(), this.getPrenom(), salaire);
     }
 
     @Override
     public String toString() {
         return "Medecin{" +
-                "id=" + id +
-                ", nom='" + nom + '\'' +
-                ", prenom='" + prenom + '\'' +
+                super.toString() +
                 ", salaire=" + salaire +
                 '}';
     }

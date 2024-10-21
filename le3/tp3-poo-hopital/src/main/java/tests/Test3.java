@@ -44,7 +44,7 @@ public class Test3 {
                 serv2.addMedecin(med4);
                 serv3.addMedecin(med5);
                 serv3.addMedecin(med6);
-                serv1.addMedecin(med7);
+                //serv1.addMedecin(med7);
 
                 med4.addServiceDirige(serv2);
                 med5.addServiceDirige(serv1);
